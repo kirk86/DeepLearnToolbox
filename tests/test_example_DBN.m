@@ -7,7 +7,8 @@ train_y = double(train_y);
 test_y  = double(test_y);
 
 %%  ex1 train a 100 hidden unit RBM and visualize its weights
-rng(0);
+% rand('state',0)
+rng(0)
 dbn.sizes = [100];
 opts.numepochs =   1;
 opts.batchsize = 100;
@@ -18,7 +19,8 @@ dbn = dbntrain(dbn, train_x, opts);
 figure; visualize(dbn.rbm{1}.W');   %  Visualize the RBM weights
 
 %%  ex2 train a 100-100 hidden unit DBN and use its weights to initialize a NN
-rng(0);
+% rand('state',0)
+rng(0)
 %train dbn
 dbn.sizes = [100 100];
 opts.numepochs =   1;
@@ -35,7 +37,7 @@ nn.activation_function = 'sigm';
 %train nn
 opts.numepochs =  1;
 opts.batchsize = 100;
-nn = nntrain(nn, train_x, train_y, opts);
-[er, bad] = nntest(nn, test_x, test_y);
+nn = nn_train(nn, train_x, train_y, opts);
+[er, bad] = nn_test(nn, test_x, test_y);
 
 assert(er < 0.10, 'Too big error');

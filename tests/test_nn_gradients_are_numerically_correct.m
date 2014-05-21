@@ -11,12 +11,14 @@ for output = {'sigm', 'linear', 'softmax'}
     
     for activation_function = {'sigm', 'tanh_opt'}
         for dropoutFraction = {0 rand()}
-            nn = nnsetup([5 3 4 2]);
+            nn = nn_setup([5 3 4 2]);
 
             nn.activation_function = activation_function{1};
             nn.output = output{1};
             nn.dropoutFraction = dropoutFraction{1};
 
+%             rand('state',0)
+%             rng(0, 'twister')
             rng(0)
             nn = nnff(nn, batch_x, y);
             nn = nnbp(nn);

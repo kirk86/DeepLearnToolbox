@@ -1,3 +1,5 @@
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rasmusbergpalm/deeplearntoolbox/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 DeepLearnToolbox
 ================
 
@@ -53,6 +55,9 @@ Setup
 1. Download.
 2. addpath(genpath('DeepLearnToolbox'));
 
-Everything is work in progress
+Known errors
 ------------------------------
 
+`test_cnn_gradients_are_numerically_correct` fails on Octave because of a bug in Octave's convn implementation. See http://savannah.gnu.org/bugs/?39314
+
+`test_example_CNN` fails in Octave for the same reason.
